@@ -1,0 +1,200 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}Tweet Home{% endblock %}
+
+{% block content %}
+<h2 class="text-center m-4">My Blogs Home</h2>
+<a class="btn btn-primary mb-4" href="{% url 'tweet_create' %}">Create Post</a>
+
+<div class="container">
+    {% for tweet in tweets %}
+    <div class="card mx-10">
+        <div class="container bg-secondary p-2 rounded mb-2">
+            <div class="d-flex align-items-center">
+                {% if tweet.user.profile and tweet.user.profile.url %}
+                <img src="{{ tweet.user.profile.url }}" alt="{{ tweet.user.username }}" class="rounded-circle" width="50" height="50" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;" />
+                {% else %}
+                <img src="{% static 'photos/user.png' %}" alt="{{ tweet.user.username }}" class="rounded-circle" width="50" height="50">
+                {% endif %}
+                <div style="margin-left: 15px; align-self: center;">{{tweet.user.username}}</div>
+            </div>
+        </div>
+
+        {% if tweet.heading %}
+        <h2 style="text-align:center">{{tweet.heading}}</h2>
+        {% endif %}
+
+        {% if tweet.photo %}
+        <img class="card-img-top" src="{{ tweet.photo.url }}" alt="Card image cap" style="max-height: 18rem; width: auto; display: block; margin-left: auto; margin-right: auto; object-fit: contain;" />
+        {% endif %}
+
+        <div class="card-body">
+            <p class="card-text">{{ tweet.text }}</p>
+            {% if tweet.user == request.user %}
+            <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger">Delete</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+
+
+
+
+{% comment %} {% extends "layout.html" %}
+{% load static %}
+{% block title %}Tweet Home{% endblock %}
+
+{% block content %}
+<h2 class="text-center m-4">My Blogs Home</h2>
+<a class="btn btn-primary mb-4" href="{% url 'tweet_create' %}">Create Post</a>
+
+<div class="container">
+    {% for tweet in tweets %}
+    <div class="card mx-10 ">
+<div class="container bg-secondary p-2 rounded mb-2 ">
+        <div class="d-flex align-items-center">
+          {% if tweet.user.profile and tweet.user.profile.url %}
+          <img src="{{ tweet.user.profile.url }}" alt="{{ tweet.user.username }}" class="rounded-circle" width="50" height="50" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;" />
+          {% else %}
+          <img src="{% static 'photos/user.png' %}" alt="{{ tweet.user.username }}" class="rounded-circle" width="50" height="50">
+          {% endif %}
+          <div style="margin-left: 15px; align-self: center;">{{tweet.user.username}}</div>
+        </div>
+      </div> 
+
+
+        {% comment %} These lines are for the Profile and name of the user {% endcomment %}
+         {% comment %} {% if tweet.user.profile and tweet.user.profile.url %}
+          <img src="{{ tweet.user.profile.url }}" alt="{{ tweet.user.username }}" class="rounded-circle" width="50" height="50">
+          {% else %}
+          <img src="{% static 'photos/user.png' %}" alt="{{ tweet.user.username }}" class="rounded-circle" width="50" height="50">
+          {% endif %}
+          <h5 class="card-title">{{ tweet.user.username }}</h5> 
+
+        {% if tweet.heading %}
+        <h2 style="text-align:center">{{tweet.heading}}</h2>
+        {% endif %}
+
+        {% if tweet.photo %}
+        {% comment %} <img class="card-img-top" style="height: 18rem; object-fit:fill" src="{{ tweet.photo.url }}" alt="Card image cap"> 
+        <img class="card-img-top" src="{{ tweet.photo.url }}" alt="Card image cap" style="max-height: 18rem; width: auto; display: block; margin-left: auto; margin-right: auto; object-fit: contain;" />
+
+        {% endif %}
+
+        <div class="card-body">
+
+
+          <p class="card-text">{{ tweet.text }}</p>
+          {% if tweet.user == request.user %}
+          <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary">Edit</a>
+          <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger">Delete</a>
+          {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %} {% endcomment %}
+
+
+
+
+
+{% comment %} {% extends "layout.html" %}
+{% block title %}Tweet Home{% endblock %}
+
+{% block content %}
+
+<h2 class="text-center m-4">My Blogs Home</h2>
+
+<a class="btn btn-primary mb-4" href="{% url 'tweet_create' %}">Create Post</a>
+
+<div class="container">
+    {% for tweet in tweets %}
+    <div class="card mb-4" mx-10>
+        <div class="card-header d-flex align-items-center">
+            <img src="{{ tweet.user.profile.image.url }}" alt="User Image" class="rounded-circle me-2" style="width: 40px; height: 40px; object-fit: cover;">
+            <h5 class="mb-0">{{ tweet.user.username }}</h5>
+        </div>
+        {% if tweet.photo %}
+        <img class="card-img-top" style="width: 18rem;" src="{{ tweet.photo.url }}" alt="Card image cap">
+        {% endif %}
+        <div class="card-body">
+          <p class="card-text">{{ tweet.text }}</p>
+          {% if tweet.user == request.user %}
+          <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary">Edit</a>
+          <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger">Delete</a>
+          {% endif %} 
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %} {% endcomment %}
+
+
+
+
+
+{% comment %} {% extends "layout.html" %}
+{% block title %}Tweet Home{% endblock %}
+
+{% block content %}
+
+<h2 class="text-center m-4">My Blogs Home</h2>
+
+<a class="btn btn-primary mb-4" href="{% url 'tweet_create' %}">Create Post</a>
+
+<div class="container ">
+    {% for tweet in tweets %}
+    <div class="card" mx-10>
+        {% if tweet.photo %}
+        <img class="card-img-top"  style="width: 18rem;" src="{{ tweet.photo.url }}" alt="Card image cap">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ tweet.user.username }}</h5>
+          <p class="card-text">{{ tweet.text }}</p>
+          {% if tweet.user == request.user %}
+          <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary">Edit</a>
+          <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger">Delete</a>
+          {% endif %} 
+        </div>
+      </div>
+
+    {% endfor %}
+</div>
+
+{% endblock %} {% endcomment %}
+
+
+{% comment %} {% extends "layout.html" %}
+{% block title %}Tweet Home{% endblock  %}
+
+{% block content %}
+
+<h2 class="text-center m-4">Welcome to Chai Tweet Project App</h2>
+
+<a class = "btn btn-primary" href="{% url 'tweet_create' %}">Create Post</a>
+
+<div class="container row gap-3">
+    {% for tweet in tweets in  %}
+    
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{tweet.photo.url}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{tweet.user.username}}</h5>
+          <p class="card-text">{{tweet.text}}</p>
+          <a href="{{% 'tweet_edit' tweet.id%}}" class="btn btn-primary">Edit</a>
+          <a href="{{% 'tweet_delete' tweet.id%}}" class="btn btn-danger">Edit</a>
+
+        </div>
+      </div>
+
+    {% endfor %}
+</div>
+
+{% endblock  %} {% endcomment %}
+

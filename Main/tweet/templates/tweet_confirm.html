@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %}Tweet Home{% endblock  %}
+
+{% block content %}
+
+<h2 class="text-center m-4">My Blog Web</h2>
+
+<h3>Are You Sure that you wnat to delete the Blog??</h3>
+<form method="post">
+    {% csrf_token %}
+
+    <button class="btn btn-danger"> Delete</button>
+    <button href="{% url 'tweet_list' %}" class="btn btn-primary"> Cancel</button>
+
+
+</form>
+
+{% endblock  %}
