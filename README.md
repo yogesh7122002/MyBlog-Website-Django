@@ -34,5 +34,5 @@ This is a Django-based blog website that includes user management features. User
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/django-blog-website.git
+   git clone https://github.com/yogesh7122002/MyBlog-Website-Django
    cd django-blog-website
